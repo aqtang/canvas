@@ -19,6 +19,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import SVG from "react-inlinesvg";
 
+import Add from "./../../assets/images/add.svg";
 import ArrangeHorizontally from "./../../assets/images/arrange_horizontally.svg";
 import ArrangeVertically from "./../../assets/images/arrange_vertically.svg";
 import Double from "./../../assets/images/double.svg";
@@ -51,6 +52,7 @@ export default class Icon extends React.Component {
 	constructor() {
 		super();
 		this.canvasIcons = {
+			add: Add,
 			arrangeHorizontally: ArrangeHorizontally,
 			arrangeVertically: ArrangeVertically,
 			double: Double,
@@ -90,7 +92,7 @@ export default class Icon extends React.Component {
 			return <ChevronLeft16 className={className} disabled={this.props.disabled} />;
 		case (CARBON_ICONS.CHEVRONARROWS.RIGHT):
 			return <ChevronRight16 className={className} disabled={this.props.disabled} />;
-		case (CARBON_ICONS.ADD):
+		case (CARBON_ICONS.ADDALT):
 			return <AddAlt16 className={className} disabled={this.props.disabled} />;
 		case (CARBON_ICONS.SETTINGS):
 			return <Settings16 className={className} disabled={this.props.disabled} />;

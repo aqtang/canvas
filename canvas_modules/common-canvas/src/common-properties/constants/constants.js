@@ -200,7 +200,7 @@ _defineConstant("CARBON_ICONS", {
 		RIGHT: "chevron-right"
 	},
 	CALCULATOR: "calculator",
-	ADD: "add",
+	ADDALT: "addalt",
 	REMOVE: "remove",
 	EDIT: "edit",
 	MEASUREMENTS: {

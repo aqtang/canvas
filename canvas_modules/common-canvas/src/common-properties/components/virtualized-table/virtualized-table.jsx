@@ -17,7 +17,7 @@
 import AutoSizer from "react-virtualized/dist/commonjs/AutoSizer";
 import { Column, Table } from "react-virtualized/dist/commonjs/Table";
 
-import { Checkbox, Loading } from "carbon-components-react";
+import { Checkbox, Loading, Button } from "carbon-components-react";
 import Icon from "./../../../icons/icon.jsx";
 import Tooltip from "./../../../tooltip/tooltip.jsx";
 import { TOOL_TIP_DELAY, SORT_DIRECTION, STATES, ROW_SELECTION, CARBON_ICONS } from "./../../constants/constants";
@@ -191,6 +191,7 @@ class VirtualizedTable extends React.Component {
 	rowRenderer(scrollKey, { className, columns, index, key, rowData, style }) {
 		let selectOption = "";
 		let selectedRow = false;
+		let rowButton = null;
 		const rowDisabled = typeof rowData.disabled === "boolean" ? rowData.disabled : false;
 
 		if (typeof this.props.rowHeight === "function" && this.props.rowHeight({ index }) === 0) {
@@ -234,6 +235,17 @@ class VirtualizedTable extends React.Component {
 			);
 		}
 
+		if (this.props.onRowButtonClick) {
+			rowButton = (<Button
+				className={"properties-vt-row-button"}
+				size="small"
+				kind="ghost"
+				onClick={(evt) => this.onRowButtonClick(evt, rowData.rowKey, index)}
+			>
+				<Icon type={"add"} className = "properties-vt-row-icon" />
+			</Button>);
+		}
+
 		const width = (parseInt(style.width, 10)) + "px"; // Subtract 2px to account for row borders
 		const newStyle = Object.assign({}, style, { width: width });
 
@@ -248,8 +260,12 @@ class VirtualizedTable extends React.Component {
 				style={newStyle}
 				onMouseDown={(evt) => this.onRowClick(evt, rowData, index)}
 			>
-				{selectOption}
-				{columns}
+				<div className="properties-vt-row-columns">
+					{selectOption}
+					{columns}
+				</div>
+				{rowButton}
+
 			</div>
 		</div>);
 	}
@@ -335,6 +351,7 @@ VirtualizedTable.propTypes = {
 		PropTypes.number.isRequired
 	]),
 	onRowDoubleClick: PropTypes.func,
+	onRowButtonClick: PropTypes.func,
 	rowsSelected: PropTypes.array, // Required if selectable is true
 	checkedAll: PropTypes.bool, // Required if selectable is true
 	setRowsSelected: PropTypes.func, // Required if selectable is true

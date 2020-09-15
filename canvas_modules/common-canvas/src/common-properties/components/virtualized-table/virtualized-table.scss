@@ -73,10 +73,15 @@ $properties-vt-checkbox-width: 45px;
 		flex: 0 1 $properties-vt-checkbox-width;
 	}
 
+	.properties-vt-row-icon {
+		height: $spacing-05;
+		width: $spacing-05;
+	}
+
 	.properties-vt-double-click:first-of-type {
 		.properties-vt-row-class {
 			border-top: 1px solid transparent;
-			&.properties-vt-row-selected{
+			&.properties-vt-row-selected {
 				border-top: 1px solid $hover-selected-ui;
 			}
 		}

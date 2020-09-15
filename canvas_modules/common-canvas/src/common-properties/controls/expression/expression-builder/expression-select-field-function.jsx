@@ -412,6 +412,7 @@ export default class ExpressionSelectFieldOrFunction extends React.Component {
 						updateRowSelections={this.onFieldTableClick}
 						selectedRows={[selectedField]}
 						onRowDoubleClick={this.onFieldTableDblClick}
+						onRowButtonClick={this.onFieldTableDblClick}
 						onSort={this.setSortColumn.bind(this, "fieldTable")}
 					/>
 				</div>
